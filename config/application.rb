@@ -20,3 +20,6 @@ module Cyclinglife
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
+
+config.i18n.default_locale = :ja
+config.time_zone = "Tokyo"
