@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'posts/new'
+  post 'posts' => 'posts#create'
   devise_for :users
   root 'homes#top'
   get 'top' => 'homes#top'
