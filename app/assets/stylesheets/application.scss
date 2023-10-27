@@ -294,3 +294,13 @@ a:hover {
   background-blend-mode: lighten;
   background-size: 100% 100%;
 }
+
+//エラーメッセージ
+.set_center_outer  {
+  text-align: center;
+}
+
+.set_center_inner {
+  display: inline-block;
+  text-align: left;
+}
