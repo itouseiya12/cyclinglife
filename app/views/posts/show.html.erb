@@ -3,6 +3,7 @@
     <div class="row justify-content-center">
       <h1 class="font-weight-normal mt-5 mb-5">撮影場所詳細</h1>
     </div>
+    <%= render partial: 'shared/error' %>
     <div class="d-flex">
       <div class="row justify-content-center d-block">
         <p class="caption"><%= @post.user.name %></p>
@@ -19,9 +20,11 @@
          </p>
         <h2>感想</h2>
         <p id="text"><%= @post.text %></p>
-        <%= link_to '編集する', edit_post_path(@post.id), class: "btn btn-info mr-3" %>
-        <%= link_to '削除する',post_path(@post.id),
-            data: { turbo_method: 'delete', turbo_confirm: '投稿を削除しますか？' }, class: "btn btn-danger" %>
+        <% if @post.user == current_user %>
+          <%= link_to '編集する', edit_post_path(@post.id), class: "btn btn-info mr-3" %>
+          <%= link_to '削除する',post_path(@post.id),
+              data: { turbo_method: 'delete', turbo_confirm: '投稿を削除しますか？' }, class: "btn btn-danger" %>
+        <% end %>
         <%= link_to '投稿一覧ページへ', posts_path, class: "btn btn-dark mt-3" %>
       </div>
       <div class="comments ml-5 mt-5">

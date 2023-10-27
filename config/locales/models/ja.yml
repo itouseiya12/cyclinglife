@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        post:
+          attributes:
+            location:
+              blank: を入力してください
+            text:
+              blank: を入力してください
+    models:
+      user: ユーザー 
+    attributes:
+      post: 
+        location: 場所
+        text: 感想
+        

@@ -14,8 +14,10 @@
 <% if user_signed_in? %> <!-- ユーザーがログインしているか調べる -->
   <!-- ユーザーがログインしていた時の処理 -->
   <h2> 現在 <%= current_user.name %> さんがログインしています </h2> <!-- ここを追加します -->
+  <div><%= link_to "マイページ", user_path(current_user.id) %></div>
   <h4> メールアドレス： <%= current_user.email %> </h4>
   <%= link_to "ログアウト", destroy_user_session_path, method: :delete %> <!-- ログアウトをする -->
+  <div><%= link_to "ユーザー", users_path %></div>
 <% else %>
   <!-- ユーザーがログインしていなかった時の処理 -->
   <h2> 現在ログインしていません </h2>
