@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all
+    @posts = @posts.where('location LIKE ?', "%#{params[:search]}%") if params[:search].present?
   end
 
   def show
