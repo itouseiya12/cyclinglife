@@ -3,21 +3,20 @@
     <div class="row justify-content-center">
       <h1 class="font-weight-normal mt-5 mb-5">撮影場所詳細</h1>
     </div>
-    <%= render partial: 'shared/error' %>
     <div class="d-flex">
       <div class="row justify-content-center d-block">
         <p class="caption"><%= @post.user.name %></p>
         <p class="caption"><%= @post.location %>
           <% if @post.favorited_by?(current_user) %>
-          <%= button_to post_favorites_path(@post), method: :delete, class: "favorite_btn" do %>
-            ♥<%= @post.favorites.count %> いいね
+            <%= button_to post_favorites_path(@post),class: "favorite_btn", method: :delete do %>
+              ♥<%= @post.favorites.count %> いいね
+            <% end %>
+            <% else %>
+            <%= button_to post_favorites_path(@post),class: "favorite_btn", method: :post do %>
+              ♡<%= @post.favorites.count %> いいね
+            <% end %>
           <% end %>
-          <% else %>
-          <%= button_to post_favorites_path(@post), method: :post, class: "favorite_btn" do %>
-            ♡<%= @post.favorites.count %> いいね
-          <% end %>
-          <% end %>
-         </p>
+        </p>
         <h2>感想</h2>
         <p id="text"><%= @post.text %></p>
         <% if @post.user == current_user %>

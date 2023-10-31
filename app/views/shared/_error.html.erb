@@ -1,10 +1,10 @@
 <div class="set_center_outer ">
   <div class="set_center_inner">
-    <% if @post.errors.any? %>
+    <% if object.errors.any? %>
       <div class="form-control text-white bg-danger mb-3">
-        <h3><%= @post.errors.count %>件のエラーが発生しました</h3>
+        <h3><%= object.errors.count %>件のエラーが発生しました</h3>
         <ul>
-        <% @post.errors.full_messages.each do |message| %>
+        <% object.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
         </ul>
