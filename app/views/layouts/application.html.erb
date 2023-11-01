@@ -5,17 +5,56 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
     <header>
-      <div><%= link_to root_path do %><img src="/assets/header.png" alt="logo" id="logo"><% end %></div>
-      <div><%= link_to "トップ", root_path, class: "text-white" %></div>
-      <div><%= link_to "投稿する", new_post_path, class: "text-white" %></div>
-      <div><%= link_to "投稿一覧", posts_path, class: "text-white" %></div>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/">CyclingLife</a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="Navber">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to user_path(current_user),class: 'nav-link text-light' do %>
+                  <i class="fas fa-home"></i>My page
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
+                  <i class="fas fa-sign-out-alt"></i> Log out
+                <% end %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to root_path,class: 'nav-link text-light' do %>
+                  <i class="fas fa-home"></i> Home
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
+                <i class="fas fa-user-plus"></i> Sign up
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_user_session_path ,class: 'nav-link text-light' do %>
+                <i class="fas fa-sign-in-alt"></i> Log in
+                <% end %>
+              </li>
+              <li>
+                <%= link_to users_guest_sign_in_path, data: { turbo_method: :post } ,class: 'nav-link text-light' do %>
+                <i class="fas fa-sign-in-alt"></i> Guest Log in
+                <% end %>
+              </li>
+            <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
     <%= yield %>
   </body>
