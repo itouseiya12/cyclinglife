@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import "font-awesome";
 
 //新規登録・ログイン画面
 * {
@@ -158,7 +159,7 @@ sub-title {
   height: 100%;
   width: 100%;
   display: table;
-  background-image: url(/assets/sample1.jpg);
+  background-image: url(/assets/toppage_image.jpg);
   background-color:rgba(255,255,255,0.4);
   background-blend-mode:lighten;
   background-size: 100% 100%;
@@ -224,35 +225,6 @@ h1 {
   background-color: rgba(255, 255, 255, 0.4);
   background-blend-mode: lighten;
   background-size: 100% 100%;
-}
-
-//ヘッダー
-header {
-  display: flex;
-  background-color: black;
-}
-
-header div:first-child {
-  margin-right: auto;
-}
-
-header div:last-child {
-  margin-right: 30px;
-}
-
-header div {
-  margin-left: 30px;
-  line-height: 30px;
-}
-
-a:hover {
-  text-decoration: none;
-  font-size: larger;
-}
-
-#logo {
-  width: 60px;
-  height: 30px;
 }
 
 //コメント欄
