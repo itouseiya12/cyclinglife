@@ -8,10 +8,13 @@ ja:
               blank: を入力してください
             text:
               blank: を入力してください
+            postimage:
+              blank: を選択してください
     models:
       user: ユーザー 
     attributes:
       post: 
         location: 場所
         text: 感想
+        postimage: 画像
         
