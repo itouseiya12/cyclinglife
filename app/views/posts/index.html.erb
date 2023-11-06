@@ -13,6 +13,7 @@
       <% @posts.each do |post| %>
       <div class="one-post">
         <%= link_to post_path(post) do %>
+        <%= image_tag post.postimage.to_s, size: "150x100" %>
         <p class="caption"><%= post.user.name %></p>
         <p class="caption"><%= post.location %></p>
         <p class="caption"><%= "#{post.comments.count} コメント" %></p>
