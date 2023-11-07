@@ -11,4 +11,7 @@ class Post < ApplicationRecord
   end
 
   mount_uploader :postimage, PostimageUploader
+
+  geocoded_by :address
+  after_validation :geocode
 end
