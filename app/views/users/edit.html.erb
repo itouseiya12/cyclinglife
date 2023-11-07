@@ -13,6 +13,10 @@
         <label class="form-label">プロフィール</label>
         <%= f.text_field :profile, class: "form-control" %><br>
       </div>
+      <div class="field">
+        <label class="form-label">アバター画像</label>
+        <%= f.file_field :avatar %>
+      </div>
       <%= f.submit '保存する', class: "btn btn-success" %>
       <% end %>
     </div>
