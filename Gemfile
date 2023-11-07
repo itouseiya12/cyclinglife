@@ -80,3 +80,4 @@ gem 'carrierwave', '~> 2.0'
 gem 'aws-sdk-s3'
 gem 'fog-aws'
 gem 'dotenv-rails'
+gem "geocoder"
