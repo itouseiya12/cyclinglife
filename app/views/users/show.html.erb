@@ -1,6 +1,6 @@
 <div class="cover-user-show">
-  <div class="container">
-    <div class="row justify-content-center">
+  <div class="box-inner">
+    <div>
       <p>
       <% if @user.avatar? %>
         <%= image_tag current_user.avatar.url, size: '100x100' %>
@@ -20,7 +20,7 @@
     <div class="d-flex">
       <h4 class="ml-3 mb-3 card w-100"><%= @user.profile %></h4>
     </div>
-    <div class="row justify-content-center">
+    <div>
       <% @posts.each do |post| %>
       <div class="one-post">
         <%= link_to post_path(post) do %>

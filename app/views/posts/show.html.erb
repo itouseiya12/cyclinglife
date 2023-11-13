@@ -1,37 +1,69 @@
 <div class="cover-show">
   <div class="container">
-    <div class="row justify-content-center">
-      <h1 class="font-weight-normal mt-5 mb-5">撮影場所詳細</h1>
-    </div>
-    <div class="d-flex">
-      <div class="row justify-content-center d-block">
-        <div>
-          <%= image_tag @post.postimage.url, :size => '300x225' %>
-        </div>
-        <p class="caption"><%= @post.user.name %></p>
-        <p class="caption"><%= @post.location %>
-          <% if @post.favorited_by?(current_user) %>
-            <%= button_to post_favorites_path(@post),class: "favorite_btn", method: :delete do %>
-              ♥<%= @post.favorites.count %> いいね
-            <% end %>
-            <% else %>
-            <%= button_to post_favorites_path(@post),class: "favorite_btn", method: :post do %>
-              ♡<%= @post.favorites.count %> いいね
-            <% end %>
+  <h1 class="font-weight-normal mt-5 mb-5">撮影場所詳細</h1>
+    <p class="caption"><%= @post.location %></p>
+    <p class="caption"><%= @post.user.name %></p>
+    <div class="row">
+      <div class="col-xs- col-sm- col-md- col-lg-6 col-xl-">
+        <%= image_tag @post.postimage.url, :size => '300x200' %>
+      </div>
+      <div class="col-xs- col-sm- col-md-4 col-lg-6 col-xl-">
+        <div id="map" style="height: 200px; width: 300px;"></div>
+        <script>
+          function initMap(){
+            let mapPosition = {lat: <%= @post.latitude %> , lng: <%= @post.longitude %> };
+            let map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 15,
+              center: mapPosition
+            });
+            let transitLayer = new google.maps.TransitLayer();
+            transitLayer.setMap(map);
+  
+            let contentString = '【住所】<%= @post.address %>';
+            let infowindow = new google.maps.InfoWindow({
+              content: contentString
+            });
+  
+            let marker = new google.maps.Marker({
+              position: mapPosition,
+              map: map,
+              title: contentString
+            });
+  
+            marker.addListener('click', function(){
+              infowindow.open(map, marker);
+            });
+          }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+      </div>
+      </div>
+      <div class="col-xs- col-sm- col-md- col-lg-6 col-xl- ml-5 mt-5">
+        <% if @post.favorited_by?(current_user) %>
+          <%= button_to post_favorites_path(@post),class: "favorite_btn", method: :delete do %>
+            ♥<%= @post.favorites.count %> いいね
           <% end %>
-        </p>
+          <% else %>
+          <%= button_to post_favorites_path(@post),class: "favorite_btn", method: :post do %>
+            ♡<%= @post.favorites.count %> いいね
+          <% end %>
+        <% end %>
+      </div>
+      <div>
         <h2>感想</h2>
         <p id="text"><%= @post.text %></p>
         <% if @post.user == current_user %>
-          <%= link_to '編集する', edit_post_path(@post.id), class: "btn btn-info mr-3" %>
+        <%= link_to '編集する', edit_post_path(@post.id), class: "btn btn-info mr-3" %>
           <%= link_to '削除する',post_path(@post.id),
-              data: { turbo_method: 'delete', turbo_confirm: '投稿を削除しますか？' }, class: "btn btn-danger" %>
+            data: { turbo_method: 'delete', turbo_confirm: '投稿を削除しますか？' }, class: "btn btn-danger" %>
         <% end %>
-        <%= link_to '投稿一覧ページへ', posts_path, class: "btn btn-dark mt-3" %>
+        <div>
+          <%= link_to '投稿一覧ページへ', posts_path, class: "btn btn-dark mt-3" %>
+        </div>
       </div>
       <div class="comments ml-5 mt-5">
         <%= form_with model:[@post, @comment] do |f| %>
-        <%= f.text_area :comment, :size=>"50x3",placeholder: "コメントする" %>
+        <%= f.text_area :comment, :size=>"30x3",placeholder: "コメントする" %>
         <%= f.submit "送信する", class: "btn btn-success mb-4" %>
         <% end %> 
         <p>コメント件数：<%= @comments.count %></p>
@@ -49,7 +81,7 @@
           </div>
         </div>
         <% end %>
-        <% end %>
+      <% end %>
       </div>
     </div>
   </div>
