@@ -2,6 +2,10 @@ ja:
   activerecord:
     errors:
       models:
+        user:
+          attributes:
+            name: 
+              too_long: は20文字以内にしてください
         post:
           attributes:
             location:
@@ -10,6 +14,8 @@ ja:
               blank: を入力してください
             postimage:
               blank: を選択してください
+            address:
+              blank: を入力してください
     models:
       user: ユーザー 
     attributes:
@@ -17,4 +23,5 @@ ja:
         location: 場所
         text: 感想
         postimage: 画像
+        address: 住所
         

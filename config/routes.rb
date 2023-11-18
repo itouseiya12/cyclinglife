@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'top' => 'homes#top'
   devise_scope :user do
-    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
+    post 'users/guest_sign_in' => 'users/sessions#guest_sign_in'
+    get '/users/sign_out' => 'devise/sessions#destroy'
   end
   resources :users, only:[:index, :show, :edit, :update]
 end
