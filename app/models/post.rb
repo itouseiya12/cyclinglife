@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   validates :location, presence: true
   validates :text, presence: true
   validates :postimage, presence: true
+  validates :address , presence: true
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
