@@ -5,7 +5,9 @@
       <% @users.each do |user| %>
       <div class="form-group card w-100">
         <%= link_to user_path(user) do %>
-          <label for="tg" class="dropLabel"><%= image_tag user.avatar.url, class: 'rounded-circle', size: '50x50' %></label>
+          <% if user.avatar.present? %>
+            <label for="tg" class="dropLabel"><%= image_tag user.avatar.url, class: 'rounded-circle', size: '50x50' %></label>
+          <% end %>
         <p class="caption h4"><%= user.name %></p>
         <p class="caption"><%= "#{user.posts.count} 投稿" %></p>
         <% end %>
