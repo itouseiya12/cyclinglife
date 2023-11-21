@@ -39,7 +39,7 @@
       </div>
       </div>
       <div class="col-xs- col-sm- col-md- col-lg-6 col-xl- ml-5 mt-5">
-        <% if @post.favorited_by?(current_user) %>
+        <% if current_user.already_favorited?(@post) %>
           <%= button_to post_favorites_path(@post),class: "favorite_btn", method: :delete do %>
             ♥<%= @post.favorites.count %> いいね
           <% end %>
