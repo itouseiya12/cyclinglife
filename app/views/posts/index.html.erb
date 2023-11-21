@@ -16,7 +16,8 @@
         <%= image_tag post.postimage.to_s, size: "150x100" %>
         <p class="caption"><%= post.user.name %></p>
         <p class="caption"><%= post.location %></p>
-        <p class="caption"><%= "#{post.comments.count} コメント" %></p>
+        <p class="caption"><%= "コメント数: #{post.comments.count}" %></p>
+        <p class="caption">いいね数：<%= post.favorited_users.count %></p>
         <% end %>
       </div>
       <% end %>
