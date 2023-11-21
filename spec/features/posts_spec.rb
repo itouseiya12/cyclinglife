@@ -25,6 +25,10 @@ RSpec.describe "Posts", type: :feature do
     it 'コメント件数が表示されていること' do
       expect(page).to have_content post.comments.count
     end
+    
+    it 'いいね件数が表示されていること' do
+      expect(page).to have_content post.favorited_users.count
+    end
 
     it '投稿リンクを押下すると投稿詳細ページへ遷移すること' do
       click_on post.location
