@@ -73,6 +73,10 @@ group :test do
   gem 'webdrivers'
 end
 
+group :production do
+  gem 'pg','0.20.0'
+end
+
 gem 'devise'
 gem 'devise-i18n'
 gem 'bootstrap', '~> 5.0.2'
