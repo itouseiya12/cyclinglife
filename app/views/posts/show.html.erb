@@ -1,88 +1,113 @@
 <div class="cover-show">
   <div class="container">
-  <h1 class="font-weight-normal mt-5 mb-5">撮影場所詳細</h1>
-    <p class="caption"><%= @post.location %></p>
-    <p class="caption"><%= @post.user.name %></p>
-    <div class="row">
-      <div class="col-xs- col-sm- col-md- col-lg-6 col-xl-">
-        <%= image_tag @post.postimage.url, :size => '300x200' %>
+    <h1 class="font-weight-normal mt-3">投稿詳細</h1>
+    <div class="col-md-10 col-md-offset-1 mx-auto postShow-wrap">
+      <div class="row post-wrap">
+        <div class="col-md-8">
+          <div class="card-left">
+            <%= image_tag @post.postimage.url, class: "card-img-top" %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card-right">
+            <div class="card-right-comment">
+              <div class="card-right-name">
+                <%= link_to user_path(@post.user) do %>
+                  <p class="caption"><%= @post.user.name %></p>
+                <% end %>
+              </div>
+              <div class="m-2">
+                <p class="caption">
+                  <%= @post.location %>
+                </p>
+              </div>
+            <div class="favorite-post-id">
+              <div class="m-2">
+                <% if current_user.already_favorited?(@post) %>
+                  <%= link_to post_favorites_path(@post),class: "favorite_btn", data: { turbo_method: :delete } do %>
+                    ♥<%= @post.favorites.count %> いいね
+                <% end %>
+                <% else %>
+                <%= link_to post_favorites_path(@post),class: "favorite_btn",data: { turbo_method: :post } do %>
+                  ♡<%= @post.favorites.count %> いいね
+                <% end %>
+              <% end %>
+              </div> 
+            </div> 
+            <div id="map" style="width:300px; height:225px"></div>
+              <script>
+               function initMap(){
+                 // 地図の位置情報(緯度・経度)を取得
+                 let mapPosition = {lat: <%= @post.latitude %> , lng: <%= @post.longitude %> };
+                 let map = new google.maps.Map(document.getElementById('map'), {
+                   zoom: 15,
+                   center: mapPosition
+                 });
+                 let transitLayer = new google.maps.TransitLayer();
+                 transitLayer.setMap(map);
+       
+                 let contentString = '【住所】<%= @post.address %>';
+                 let infowindow = new google.maps.InfoWindow({
+                   content: contentString
+                 });
+       
+                 let marker = new google.maps.Marker({
+                   position: mapPosition,
+                   map: map,
+                   title: contentString
+                 });
+       
+                 marker.addListener('click', function(){
+                   infowindow.open(map, marker);
+                 });
+               }
+               </script>
+               <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+            </div>
+          </div> 
+        </div>
       </div>
-      <div class="col-xs- col-sm- col-md-4 col-lg-6 col-xl-">
-        <div id="map" style="height: 200px; width: 300px;"></div>
-        <script>
-          function initMap(){
-            let mapPosition = {lat: <%= @post.latitude %> , lng: <%= @post.longitude %> };
-            let map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 15,
-              center: mapPosition
-            });
-            let transitLayer = new google.maps.TransitLayer();
-            transitLayer.setMap(map);
-  
-            let contentString = '【住所】<%= @post.address %>';
-            let infowindow = new google.maps.InfoWindow({
-              content: contentString
-            });
-  
-            let marker = new google.maps.Marker({
-              position: mapPosition,
-              map: map,
-              title: contentString
-            });
-  
-            marker.addListener('click', function(){
-              infowindow.open(map, marker);
-            });
-          }
-        </script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
-      </div>
-      </div>
-      <div class="col-xs- col-sm- col-md- col-lg-6 col-xl- ml-5 mt-5">
-        <% if current_user.already_favorited?(@post) %>
-          <%= button_to post_favorites_path(@post),class: "favorite_btn", method: :delete do %>
-            ♥<%= @post.favorites.count %> いいね
-          <% end %>
-          <% else %>
-          <%= button_to post_favorites_path(@post),class: "favorite_btn", method: :post do %>
-            ♡<%= @post.favorites.count %> いいね
-          <% end %>
-        <% end %>
-      </div>
+    </div>
+    <div class="row parts">
+      <h2>詳細</h2>
+      <div class="textarea"><%= @post.text %></div>
       <div>
-        <h2>感想</h2>
-        <p id="text"><%= @post.text %></p>
         <% if @post.user == current_user %>
-        <%= link_to '編集する', edit_post_path(@post.id), class: "btn btn-info mr-3" %>
-          <%= link_to '削除する',post_path(@post.id),
-            data: { turbo_method: 'delete', turbo_confirm: '投稿を削除しますか？' }, class: "btn btn-danger" %>
+        <div class="button" >
+         <%= link_to '編集する', edit_post_path(@post.id), class: "btn btn-primary" %>
+         <%= link_to '削除する',post_path(@post.id),
+           data: { turbo_method: 'delete', turbo_confirm: '投稿を削除しますか？' }, class: "btn btn-danger" %>
+        </div>
         <% end %>
-        <div>
-          <%= link_to '投稿一覧ページへ', posts_path, class: "btn btn-dark mt-3" %>
+        <div class="button" >
+          <%= link_to '投稿一覧ページへ', posts_path, class: "btn btn-dark" %>
+          <%= link_to "前の画面へ戻る", :back , class: "btn btn-secondary"%>
         </div>
       </div>
       <div class="comments ml-5 mt-5">
         <%= form_with model:[@post, @comment] do |f| %>
-        <%= f.text_area :comment, :size=>"30x3",placeholder: "コメントする" %>
+        <div class="field message_box">
+          <%= f.text_area :comment, style: "width:100%",placeholder: "コメントする" %>
+        </div>
         <%= f.submit "送信する", class: "btn btn-success mb-4" %>
         <% end %> 
-        <p>コメント件数：<%= @comments.count %></p>
-        <% @comments.each do |comment| %>
-        <div class="comments-index mb-2">
-          <%= comment.user.name %>
-          <%= comment.created_at.strftime('%Y/%m/%d') %><br>
-          <div class="d-flex">
-            <%= comment.comment %>
-            <% if comment.user == current_user %>
-            <div class="comment-delete">
-              <%= link_to "削除", post_comment_path(comment.post, comment),
-              data: { turbo_method: 'delete', turbo_confirm: 'コメントを削除しますか？' }, class: "btn btn-danger" %>
+          <p>コメント件数：<%= @comments.count %></p>
+          <% @comments.each do |comment| %>
+          <div class="comments-index mb-2">
+            <%= comment.user.name %>
+            <%= comment.created_at.strftime('%Y/%m/%d') %><br>
+            <div class="d-flex">
+              <%= comment.comment %>
+              <% if comment.user == current_user %>
+              <div class="comment-delete">
+                <%= link_to "削除", post_comment_path(comment.post, comment),
+                data: { turbo_method: 'delete', turbo_confirm: 'コメントを削除しますか？' }, class: "btn btn-danger" %>
+              </div>
             </div>
           </div>
-        </div>
+          <% end %>
         <% end %>
-      <% end %>
       </div>
-    </div>
+    </div> 
   </div>
 </div>

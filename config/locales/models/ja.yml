@@ -20,8 +20,8 @@ ja:
       user: ユーザー 
     attributes:
       post: 
-        location: 場所
-        text: 感想
+        location: 撮影場所
+        text: 詳細
         postimage: 画像
         address: 住所
         
