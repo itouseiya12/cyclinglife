@@ -1,18 +1,36 @@
 <div class="cover-user-index">
   <div class="container">
-    <div class="box-inner">
-      <h1>ユーザー一覧</h1>
-      <% @users.each do |user| %>
-      <div class="form-group card w-100">
-        <%= link_to user_path(user) do %>
-          <% if user.avatar.present? %>
-            <label for="tg" class="dropLabel"><%= image_tag user.avatar.url, class: 'rounded-circle', size: '50x50' %></label>
-          <% end %>
-        <p class="caption h4"><%= user.name %></p>
-        <p class="caption"><%= "#{user.posts.count} 投稿" %></p>
-        <% end %>
+    <div class="navbar bg-body-tertiary">
+      <div class="container-fluid">
+        <h1 class="font-weight-normal mt-3">ユーザー一覧</h1>
       </div>
-      <% end %>
+    </div>
+    <div class="row">
+      <div class="col-10 mx-auto">
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th class="caption">ユーザー名</th>
+              <th class="caption">投稿数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td class="caption">
+                  <% if user.avatar.present? %>
+                    <label for="tg" class="dropLabel"><%= image_tag user.avatar.url, class: 'rounded-circle', size: '25x25' %></label>
+                  <% else %>
+                    <label for="tg" class="dropLabel"><%= image_tag "default_avator_image.png", class: 'rounded-circle', size: '25x25' %></label>
+                  <% end %>
+                 <%= link_to user.name, user_path(user) %>
+                </td>
+                <td class="caption"><%= "#{user.posts.count}" %></td>
+              </tr>  
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

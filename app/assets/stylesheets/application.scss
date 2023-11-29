@@ -1,6 +1,20 @@
 @import "bootstrap";
 @import "font-awesome";
 
+body{
+  display: table;
+  background-image: url(/assets/toppage_image.jpg);
+  background-color:rgba(255,255,255,0.4);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-blend-mode:lighten;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 0;
+  padding-top: 66.6666666667%;
+  background-size: cover;
+}
+
 //新規登録・ログイン画面
 * {
     margin: 0px;
@@ -24,8 +38,9 @@
   border: 1px #ddd solid;
 }
 
-.box-inner {
+.box-inner-login {
   padding: 20px 26px;
+  background-color: white;
 }
 
 h1 {
@@ -159,8 +174,6 @@ sub-title {
   height: 100%;
   width: 100%;
   display: table;
-  background-image: url(/assets/toppage_image.jpg);
-  background-color:rgba(255,255,255,0.4);
   background-blend-mode:lighten;
   background-size: 100% 100%;
 }
@@ -182,7 +195,6 @@ h1 {
   background-size: 100% 100%;
   background-blend-mode: lighten;
   background-color: rgba(255, 255, 255, 0.4);
-  background-image: url(/assets/sample2.jpg);
 }
 
 .box-inner {
@@ -240,11 +252,10 @@ h1 {
   display: none;
 }
 
-//投稿一覧ページ
+//投稿一覧・詳細ページ
 .cover-index {
   height: 100%;
   width: 100%;
-  background-image: url(/assets/sample3.jpg);
   background-color: rgba(255, 255, 255, 0.4);
   background-blend-mode: lighten;
   background-size: 100% 100%;
@@ -256,18 +267,59 @@ h1 {
 
 .caption {
   color: black;
-  font-size: 20px;
+  font-size: 15px;
+  text-decoration: none ;
+  vertical-align: middle;
+  text-align:center;
+}
+
+.favorite_btn {
   text-decoration: none;
 }
 
+.button {
+  margin: 0px;
+  padding: 10px;
+}
+
+.card-right {
+  padding: 20px;
+}
+
+.card-right-name {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e6e6e6;
+  display: flex;
+}
+
+.card-right-comment {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e6e6e6;
+  height: 280px;
+  overflow: auto;
+}
+
+.post-user-name {
+  display: flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.message_box{
+  flex-grow: 1;
+}
+
+.textarea{
+  background-color: white;
+}
+
 //編集ページ
-.cover-edit {
-  height: 100%;
-  width: 100%;
-  background-image: url(/assets/sample5.jpg);
-  background-color: rgba(255, 255, 255, 0.4);
-  background-blend-mode: lighten;
+.cover-post-edit {
+  width: 70%;
+  height: 600px;
+  margin: 60px auto 0;
   background-size: 100% 100%;
+  background-blend-mode: lighten;
 }
 
 //コメント欄
@@ -284,17 +336,19 @@ h1 {
 .cover-user-show {
   height: 100%;
   width: 100%;
-  background-image: url(/assets/sample6.jpg);
   background-color: rgba(255, 255, 255, 0.4);
   background-blend-mode: lighten;
   background-size: 100% 100%;
+}
+
+.userpage-post {
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 //ユーザー一覧ページ
 .cover-user-index {
   height: 100%;
   width: 100%;
-  background-image: url(/assets/sample7.jpg);
   background-color: rgba(255, 255, 255, 0.4);
   background-blend-mode: lighten;
   background-size: 100% 100%;
@@ -302,12 +356,12 @@ h1 {
 
 //ユーザー編集ページ
 .cover-user-edit {
-  height: 100%;
-  width: 100%;
-  background-image: url(/assets/sample8.jpg);
-  background-color: rgba(255, 255, 255, 0.4);
-  background-blend-mode: lighten;
+  width: 70%;
+  height: 600px;
+  margin: 60px auto 0;
   background-size: 100% 100%;
+  background-blend-mode: lighten;
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 //エラーメッセージ
@@ -318,4 +372,8 @@ h1 {
 .set_center_inner {
   display: inline-block;
   text-align: left;
+}
+
+.img-box {
+  text-align:center;
 }

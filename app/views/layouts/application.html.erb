@@ -6,7 +6,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
   </head>
   <body>
     <header>
@@ -21,7 +20,7 @@
             <% if user_signed_in? %>
               <li>
                 <%= link_to root_path,class: 'nav-link text-light' do %>
-                <i class="fas fa-home"></i> Top page
+                <i class="fas fa-home"></i> Top Page
                 <% end %>
               </li>
               <li>
@@ -31,48 +30,50 @@
               </li>
               <li>
                 <%= link_to posts_path,class: 'nav-link text-light' do %>
-                  <i class="fas fa-list-ul"></i> Posts List
+                  <i class="fas fa-list-ul"></i> Post Lists
                 <% end %>
               </li>
               <li>
                 <%= link_to users_path,class: 'nav-link text-light' do %>
-                  <i class="fas fa-user-friends"></i></i> User List
+                  <i class="fas fa-user-friends"></i></i> User Lists
                 <% end %>
               </li>
               <li>
                 <%= link_to user_path(current_user),class: 'nav-link text-light' do %>
-                  <i class="far fa-address-card"></i> My page
+                  <i class="far fa-address-card"></i> My Page
                 <% end %>
               </li>
               <li>
                 <% if current_user.avatar? %>
                   <label for="tg" class="dropLabel"><%= image_tag current_user.avatar.url, class: 'rounded-circle', size: '50x50' %></label>
+                  <% else %>
+                  <label for="tg" class="dropLabel"><%= image_tag "default_avator_image.png", class: 'rounded-circle', size: '50x50' %></label>
                 <% end %>
               </li>
               <li>
                 <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
-                  <i class="fas fa-sign-out-alt"></i> Log out
+                  <i class="fas fa-sign-out-alt"></i> Log Out
                 <% end %>
               </li>
             <% else %>
               <li>
                 <%= link_to root_path,class: 'nav-link text-light' do %>
-                  <i class="fas fa-home"></i> Top page
+                  <i class="fas fa-home"></i> Top Page
                 <% end %>
               </li>
               <li>
                 <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
-                <i class="fas fa-user-plus"></i> Sign up
+                <i class="fas fa-user-plus"></i> Sign Up
                 <% end %>
               </li>
               <li>
                 <%= link_to new_user_session_path ,class: 'nav-link text-light' do %>
-                <i class="fas fa-sign-in-alt"></i> Log in
+                <i class="fas fa-sign-in-alt"></i> Log In
                 <% end %>
               </li>
               <li>
                 <%= link_to users_guest_sign_in_path, data: { turbo_method: :post } ,class: 'nav-link text-light' do %>
-                <i class="fas fa-sign-in-alt"></i> Guest Log in
+                <i class="fas fa-sign-in-alt"></i> Guest Log In
                 <% end %>
               </li>
             <% end %>
@@ -82,5 +83,6 @@
       </nav>
     </header>
     <%= yield %>
+    <%= javascript_importmap_tags %>
   </body>
 </html>
