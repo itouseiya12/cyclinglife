@@ -8,17 +8,17 @@
 画面上部右のタブからユーザー登録をすることなくゲストユーザーとしてログインできます。
  
 # 使用技術
- フロントエンド 　
+
   ・ HTML  
   . CSS  
   . JavaScript  
-  . Bootstrap5  
-
- バックエンド 　
+  . Bootstrap5  　
   ・ Ruby  3.0.6
   ・ Ruby on rails 7.0.8
   ・ PostgreSLQ
- 
+  ・ Heroku  
+  ・ AWS S3  
+  ・ Rspec
 # Requirement
  
 "hoge"を動かすのに必要なライブラリなどを列挙する
