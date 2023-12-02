@@ -4,7 +4,7 @@
 撮影した場所の住所を入力することで、Gogle Mapを表示することもできます。
  
 # URL
- https://cyclinglife-e347f543e037.herokuapp.com/
+ https://cyclinglife-e347f543e037.herokuapp.com
 画面上部右のタブからユーザー登録をすることなくゲストユーザーとしてログインできます。
  
 # Features
