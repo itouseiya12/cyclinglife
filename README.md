@@ -9,16 +9,18 @@
  
 # 使用技術
 
-  ・ HTML  
-  . CSS  
-  . JavaScript  
-  . Bootstrap5  　
-  ・ Ruby  3.0.6
-  ・ Ruby on rails 7.0.8
-  ・ PostgreSLQ
-  ・ Heroku  
-  ・ AWS S3  
-  ・ Rspec
+  * HTML  
+  * CSS  
+  * JavaScript  
+  * Bootstrap5  
+  * Ruby 3.0.6  
+  * Ruby on rails 7.0.8  
+  * PostgreSLQ  
+  * Heroku  
+  * AWS S3  
+  * Rspec
+  * Google maps API
+
 # Requirement
  
 "hoge"を動かすのに必要なライブラリなどを列挙する
