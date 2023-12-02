@@ -1,15 +1,23 @@
 # Cycling Life
-景色の画像投稿サイトです。 
-撮影した画像を他のユーザーに共有することができます。 
-撮影した場所の住所を入力することで、Gogle Mapを表示することもできます。 
+景色の画像投稿サイトです。  
+撮影した画像を他のユーザーに共有することができます。  
+撮影した場所の住所を入力することで、Gogle Mapを表示することもできます。  
 
 # URL
  https://cyclinglife-e347f543e037.herokuapp.com　  
 画面上部右のタブからユーザー登録をすることなくゲストユーザーとしてログインできます。
  
-# Features
- 
-"hoge"のセールスポイントや差別化などを説明する
+# 使用技術
+ フロントエンド 　
+  ・ HTML  
+  . CSS  
+  . JavaScript  
+  . Bootstrap5  
+
+ バックエンド 　
+  ・ Ruby  3.0.6
+  ・ Ruby on rails 7.0.8
+  ・ PostgreSLQ
  
 # Requirement
  
