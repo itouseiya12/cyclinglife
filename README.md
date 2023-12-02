@@ -21,31 +21,20 @@
   * Rspec
   * Google maps API
 
-# Requirement
+# 構成図
  
-"hoge"を動かすのに必要なライブラリなどを列挙する
+![railsApp.drawio.png](./railsApp.drawio.png)
  
-* huga 3.5.2
-* hogehuga 1.0.2
+# ER図
  
-# Installation
  
-Requirementで列挙したライブラリなどのインストール方法を説明する
- 
-```bash
-pip install huga_package
-```
- 
-# Usage
- 
-DEMOの実行方法など、"hoge"の基本的な使い方を説明する
- 
-```bash
-git clone https://github.com/hoge/~
-cd examples
-python demo.py
-```
- 
+# 機能一覧
+
+ | TH1 | TH2 |
+----|---- 
+| TD1 | TD3 |
+| TD2 | TD4 |
+
 # Note
  
 注意点などがあれば書く
@@ -66,4 +55,4 @@ python demo.py
 社内向けなら社外秘であることを明示してる
  
 "hoge" is Confidential.
-![railsApp.drawio.png](./railsApp.drawio.png)
+
