@@ -1,6 +1,15 @@
 <div class="cover align-middle">
   <div class="text-center">
-    <p class="sub-title">〜自転車に乗ってどこまでも〜</p>
-    <h1 class="title mb-2">CyclingLife</h1>
+    <h1 class="title mb-5">CyclingLife</h1>
+    <p class="sub-title">自転車に乗る人のための画像投稿サイトです。<br >
+       お気に入りの場所を共有しましょう！</p>
+    <% unless current_user %>
+      <%= link_to new_user_registration_path do %>
+        <h2 class="btn btn-primary mr-2">新規登録</h2>
+      <% end %>
+      <%= link_to new_user_session_path do %>
+        <h2 class="btn btn-success ml-2">ログイン</h2>
+      <% end %>
+    <% end %>
   </div>
 </div>
