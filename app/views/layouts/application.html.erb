@@ -20,27 +20,27 @@
             <% if user_signed_in? %>
               <li>
                 <%= link_to root_path,class: 'nav-link text-light' do %>
-                <i class="fas fa-home"></i> Top Page
+                <i class="fas fa-home"></i> トップページ
                 <% end %>
               </li>
               <li>
                 <%= link_to new_post_path,class: 'nav-link text-light' do %>
-                  <i class="far fa-edit"></i> Post
+                  <i class="far fa-edit"></i> 新規投稿
                 <% end %>
               </li>
               <li>
                 <%= link_to posts_path,class: 'nav-link text-light' do %>
-                  <i class="fas fa-list-ul"></i> Post Lists
+                  <i class="fas fa-list-ul"></i> 投稿一覧
                 <% end %>
               </li>
               <li>
                 <%= link_to users_path,class: 'nav-link text-light' do %>
-                  <i class="fas fa-user-friends"></i></i> User Lists
+                  <i class="fas fa-user-friends"></i></i> ユーザー一覧
                 <% end %>
               </li>
               <li>
                 <%= link_to user_path(current_user),class: 'nav-link text-light' do %>
-                  <i class="far fa-address-card"></i> My Page
+                  <i class="far fa-address-card"></i> マイページ
                 <% end %>
               </li>
               <li>
@@ -52,28 +52,28 @@
               </li>
               <li>
                 <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
-                  <i class="fas fa-sign-out-alt"></i> Log Out
+                  <i class="fas fa-sign-out-alt"></i> ログアウト
                 <% end %>
               </li>
             <% else %>
               <li>
                 <%= link_to root_path,class: 'nav-link text-light' do %>
-                  <i class="fas fa-home"></i> Top Page
+                  <i class="fas fa-home"></i> トップページ
                 <% end %>
               </li>
               <li>
                 <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
-                <i class="fas fa-user-plus"></i> Sign Up
+                <i class="fas fa-user-plus"></i> 新規登録
                 <% end %>
               </li>
               <li>
                 <%= link_to new_user_session_path ,class: 'nav-link text-light' do %>
-                <i class="fas fa-sign-in-alt"></i> Log In
+                <i class="fas fa-sign-in-alt"></i> ログイン
                 <% end %>
               </li>
               <li>
                 <%= link_to users_guest_sign_in_path, data: { turbo_method: :post } ,class: 'nav-link text-light' do %>
-                <i class="fas fa-sign-in-alt"></i> Guest Log In
+                <i class="fas fa-sign-in-alt"></i> ゲストログイン
                 <% end %>
               </li>
             <% end %>
