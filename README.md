@@ -5,7 +5,7 @@
 
 ![toppage.png](./toppage.png)
 
- https://cyclinglife-e347f543e037.herokuapp.com　  
+ https://cyclinglife-e347f543e037.herokuapp.com/
 画面上部右のタブからユーザー登録をすることなくゲストユーザーとしてログインできます。
 
 # 開発経緯
