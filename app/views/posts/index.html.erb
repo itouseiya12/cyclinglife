@@ -4,7 +4,7 @@
       <div class="container-fluid">
         <h1 class="font-weight-normal mt-3">投稿一覧</h1>
         <%= form_with url: posts_path, method: :get, local: true do |f| %>
-        <%= f.text_field :search %>
+        <%= f.text_field :search , placeholder: "探したい場所を検索"%>
         <%= f.submit '検索する', name: nil %>
         <% end %>
       </div>
@@ -15,8 +15,6 @@
           <thead class="thead-dark">
             <tr>
               <th class="caption">投稿画像</th>
-              <th class="caption">撮影場所</th>
-              <th class="caption">ユーザー名</th>
               <th class="caption">コメント数</th>
               <th class="caption">いいね数</th>
             </tr>
@@ -26,9 +24,9 @@
               <tr>
                 <td class="caption">
                   <%= image_tag post.postimage.to_s, size: "150x100" %>
+                  <p><%= link_to post.location ,post_path(post) %></p>
+                  <p><%= link_to post.user.name ,user_path(post.user) %></p>
                 </td>
-                <td class="caption"><%= link_to post.location ,post_path(post) %></td>
-                <td class="caption"><%= post.user.name %></td>
                 <td class="caption"><%= "#{post.comments.count}" %></td>
                 <td class="caption"><%= post.favorited_users.count %></td>
               </tr>  
