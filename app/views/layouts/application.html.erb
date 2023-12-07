@@ -88,6 +88,11 @@
       <% end %>
     </main>
     <%= yield %>
+    <span id="back">
+      <a href="">
+        <%= image_tag asset_path('arrow.png'), data: {"turbolinks"=>false}, class: "arrow" %>
+      </a>
+    </span>
     <%= javascript_importmap_tags %>
   </body>
 </html>

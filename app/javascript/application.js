@@ -4,3 +4,12 @@
 //= require bootstrap-sprockets
 import "@hotwired/turbo-rails"
 import "controllers"
+
+$(function() {
+    $('#back a').on('click',function(event){
+      $('body, html').animate({
+        scrollTop:0
+      }, 800);
+      event.preventDefault();
+    });
+  });
