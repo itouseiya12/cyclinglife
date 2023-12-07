@@ -378,3 +378,22 @@ h1 {
 .img-box {
   text-align:center;
 }
+
+//フラッシュメッセージ
+.flash-message {
+  border-radius: 5px;
+  padding: 16px 24px;
+  margin: 16px 0px;
+}
+ 
+.flash-message.notice {
+  background-color: #b5e99f;
+  color: #0b9709;
+  border: solid 1px #1bc231;
+}
+ 
+.flash-message.alert {
+  background-color: #ffd4d1;
+  color: #930403;
+  border: solid 1px #930403;
+}
