@@ -4,11 +4,7 @@
       <div class="title">
         <div class="navbar bg-body-tertiary">
           <div class="container-fluid">
-            <% if user_signed_in? && @user == current_user %>
-            <h1 class="font-weight-normal mt-3">マイページ</h1>
-            <% else %>
             <h1 class="font-weight-normal mt-3"><%= @user.name %></h1>
-            <% end %>
           </div>
         </div>
       </div>
