@@ -89,5 +89,6 @@ ja:
               taken: は既に使用されています。
             password: 
               blank: が入力されていません。
+              too_short: パスワードは６文字以上で入力してください。
             password_confirmation:
               blank: が入力されていません。
