@@ -94,29 +94,29 @@
           <%= link_to '投稿一覧ページへ', posts_path, class: "btn btn-dark" %>
           <%= link_to "前の画面へ戻る", :back , class: "btn btn-secondary"%>
         </div>
-        <div class="comments ml-5 mt-5">
-        <%= form_with model:[@post, @comment] do |f| %>
-        <div class="field message_box">
-          <%= f.text_area :comment, style: "width:100%",placeholder: "コメントする" %>
+        <div>
+          <%= form_with model:[@post, @comment] do |f| %>
+            <%= f.text_area :comment, style: "width:100%",placeholder: "コメントする" %>
+            <%= f.submit "送信する", class: "btn btn-success mb-4" %>
+          <% end %>
         </div>
-        <%= f.submit "送信する", class: "btn btn-success mb-4" %>
-        <% end %> 
+        <div>
           <p>コメント件数：<%= @comments.count %></p>
           <% @comments.each do |comment| %>
-          <div class="comments-index mb-2">
+          <div>
             <%= comment.user.name %>
-            <%= comment.created_at.strftime('%Y/%m/%d') %><br>
-            <div>
-              <%= comment.comment %>
-              <% if comment.user == current_user %>
-              <div class="comment-delete">
-                <%= link_to "削除", post_comment_path(comment.post, comment),
-                data: { turbo_method: 'delete', turbo_confirm: 'コメントを削除しますか？' }, class: "btn btn-danger" %>
-              </div>
+            <%= comment.created_at.strftime('%Y/%m/%d') %>
+          </div>
+          <div class="comments-index mb-2">
+            <%= comment.comment %>
+            <% if comment.user == current_user %>
+            <div class="comment-delete"><%= link_to "削除", post_comment_path(comment.post, comment), class: "btn-sm btn-danger",
+                  data: { turbo_method: 'delete', turbo_confirm: 'コメントを削除しますか？' } %>
             </div>
+            <% end %>
           </div>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div> 
   </div>
