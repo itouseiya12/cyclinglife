@@ -16,6 +16,10 @@ ja:
               blank: を選択してください
             address:
               blank: を入力してください
+        comment:
+          attributes:
+            comment:
+              blank: を入力してください
     models:
       user: ユーザー 
     attributes:
@@ -24,4 +28,5 @@ ja:
         text: 詳細
         postimage: 画像
         address: 住所
-        
+      comment:
+        comment: コメント

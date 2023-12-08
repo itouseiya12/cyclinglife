@@ -1,6 +1,17 @@
 <div class="cover-show">
+  <% if @comment.errors.any? %>
+    <div class="card text-center card text-white bg-danger mb-3">
+      <% @comment.errors.full_messages.each do |message| %>
+      <%= message %>
+      <% end %>
+    </div>
+  <% end %>
   <div class="container">
-    <h1 class="font-weight-normal mt-3">投稿詳細</h1>
+    <div class="navbar bg-body-tertiary">
+      <div class="container-fluid">
+        <h1 class="font-weight-normal mt-3">投稿詳細</h1>
+      </div>
+    </div>
     <div class="col-md-10 col-md-offset-1 mx-auto postShow-wrap">
       <div class="row post-wrap">
         <div class="col-md-8">
@@ -70,7 +81,7 @@
     </div>
     <div class="row parts">
       <h2>詳細</h2>
-      <div class="textarea"><%= @post.text %></div>
+      <div class="textarea"><%= simple_format(@post.text) %></div>
       <div>
         <% if @post.user == current_user %>
         <div class="button" >
@@ -83,8 +94,7 @@
           <%= link_to '投稿一覧ページへ', posts_path, class: "btn btn-dark" %>
           <%= link_to "前の画面へ戻る", :back , class: "btn btn-secondary"%>
         </div>
-      </div>
-      <div class="comments ml-5 mt-5">
+        <div class="comments ml-5 mt-5">
         <%= form_with model:[@post, @comment] do |f| %>
         <div class="field message_box">
           <%= f.text_area :comment, style: "width:100%",placeholder: "コメントする" %>
@@ -96,7 +106,7 @@
           <div class="comments-index mb-2">
             <%= comment.user.name %>
             <%= comment.created_at.strftime('%Y/%m/%d') %><br>
-            <div class="d-flex">
+            <div>
               <%= comment.comment %>
               <% if comment.user == current_user %>
               <div class="comment-delete">
