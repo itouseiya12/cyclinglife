@@ -10,6 +10,7 @@
     <div class="form-group">
       <label class="form-label">詳細</label>
       <%=f.text_area :text,placeholder: "撮影した場所の詳細を入力", class: "form-control" %>
+      <%= simple_format(@post.text) %>
     </div>
     <label class="form-image">
       <span class="image-file">クリックして投稿したい画像を選択</span>
