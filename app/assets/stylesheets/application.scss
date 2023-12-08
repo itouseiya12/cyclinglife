@@ -13,6 +13,8 @@ body{
   height: 0;
   padding-top: 66.6666666667%;
   background-size: cover;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 //新規登録・ログイン画面
@@ -254,7 +256,7 @@ h1 {
 }
 
 //投稿一覧・詳細ページ
-.cover-index {
+.cover-index,.cover-show {
   height: 100%;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.4);
