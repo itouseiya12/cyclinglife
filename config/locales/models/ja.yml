@@ -27,6 +27,6 @@ ja:
         location: 撮影場所
         text: 詳細
         postimage: 画像
-        address: 住所
+        address: 施設名、又は住所
       comment:
         comment: コメント
