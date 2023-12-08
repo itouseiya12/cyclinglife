@@ -9,7 +9,7 @@
   <div class="container">
     <div class="navbar bg-body-tertiary">
       <div class="container-fluid">
-        <h1 class="font-weight-normal mt-3">投稿詳細</h1>
+        <h1 class="font-weight-normal mt-3"><%= @post.location %></h1>
       </div>
     </div>
     <div class="col-md-10 col-md-offset-1 mx-auto postShow-wrap">
@@ -29,7 +29,7 @@
               </div>
               <div class="m-2">
                 <p class="caption">
-                  <%= @post.location %>
+                  <%= @post.address %>
                 </p>
               </div>
             <div class="favorite-post-id">
@@ -57,7 +57,7 @@
                  let transitLayer = new google.maps.TransitLayer();
                  transitLayer.setMap(map);
        
-                 let contentString = '【住所】<%= @post.address %>';
+                 let contentString = '<%= @post.address %>';
                  let infowindow = new google.maps.InfoWindow({
                    content: contentString
                  });
@@ -80,8 +80,7 @@
       </div>
     </div>
     <div class="row parts">
-      <h2>詳細</h2>
-      <div class="textarea"><%= simple_format(@post.text) %></div>
+      <div class="textarea mt-3"><%= simple_format(@post.text) %></div>
       <div>
         <% if @post.user == current_user %>
         <div class="button" >
