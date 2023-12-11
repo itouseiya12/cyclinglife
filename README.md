@@ -37,7 +37,7 @@
 ![railsApp.drawio.png](./railsApp.drawio.png)
  
 # ER図
-![ER_Diagram.png](./ER_Diagram.png)
+
  
 # 機能一覧
 
