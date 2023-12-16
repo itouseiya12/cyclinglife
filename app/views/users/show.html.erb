@@ -38,6 +38,8 @@
                 <% end %>
               </tr>
             </table>
+            <%= link_to "いいねした投稿", favorites_user_path(@user) , class: "btn-sm btn-primary" %>
+            <%= link_to "コメントした投稿", comments_user_path(@user) , class: "btn-sm btn-danger" %>
             <table class="table">
               <tr>
                 <td>
@@ -54,27 +56,31 @@
     <div class="columns">
       <% @posts.each do |post| %>
         <div class="userpage-post">
-          <figure>
-            <%= link_to post_path(post) do %>
-              <p class="caption mb-0"><%= post.location %></p>
-              <p class="caption"><%= "#{post.comments.count} コメント" %></p>
-            <% end %>
-          </figure>
           <div class="media">
             <div class="media-content">
               <%= link_to  post_path(post) ,class: "btn btn-primary text-white" do %>
                 <i class="fas fa-search"></i> 
-              <% end %>
-              <% if @user.id == current_user.id %>
-                <%= link_to edit_post_path(post), class: "btn btn-secondary text-white" do %>
-                  <i class="fas fa-pen"></i>
-                <% end %>
-                <%= link_to post_path(post) , data: { turbo_method: 'delete', turbo_confirm: '投稿を削除しますか？' },class: "btn btn-danger text-white" do %>
-                  <i class="far fa-trash-alt"></i> 
-                <% end %>
+                <%= image_tag post.postimage.to_s, size: "150x100" %>
               <% end %>
             </div>
           </div>
+          <figure>
+            <%= link_to post_path(post) do %>
+              <p class="caption mb-0"><%= post.location %></p>
+              <p class="caption"><%= "#{post.comments.count} コメント" %></p>
+              <p class="caption"><%= post.favorited_users.count %> いいね</p>
+            <% end %>
+          </figure>
+          <p class="edit-delete-button">
+            <% if @user.id == current_user.id %>
+              <%= link_to edit_post_path(post), class: "btn btn-secondary text-white" do %>
+                <i class="fas fa-pen"></i>
+              <% end %>
+              <%= link_to post_path(post) , data: { turbo_method: 'delete', turbo_confirm: '投稿を削除しますか？' },class: "btn btn-danger text-white" do %>
+                <i class="far fa-trash-alt"></i> 
+              <% end %>
+            <% end %>
+          </p>
         </div>
       <% end %>
     </div>

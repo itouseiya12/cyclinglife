@@ -348,6 +348,16 @@ h1 {
   background-color: rgba(255, 255, 255, 0.4);
 }
 
+.media-content {
+  display: flex;
+  justify-content: center;
+}
+
+.edit-delete-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
 //ユーザー一覧ページ
 .cover-user-index {
   height: 100%;
